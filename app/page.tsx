@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <About />
       <Speakers />
-      <Sponsors />
+      {/* <Sponsors /> */}
       <Registration />
       <Volunteer />
       <Contact />

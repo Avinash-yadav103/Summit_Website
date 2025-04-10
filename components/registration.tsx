@@ -98,21 +98,21 @@ export default function Registration() {
               Register on Luma
             </a>
 
-            <div className="relative my-6">
+            {/* <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-white/20"></div>
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-purple-900/50 backdrop-blur-sm text-white/70 rounded">or</span>
               </div>
-            </div>
+            </div> */}
 
-            <button
+            {/* <button
               onClick={() => setShowForm(!showForm)}
               className="w-full bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center mb-4 backdrop-blur-sm border border-white/10"
             >
               {showForm ? "Hide Registration Form" : "Show Alternative Registration Form"}
-            </button>
+            </button> */}
 
             {showForm && (
               <>

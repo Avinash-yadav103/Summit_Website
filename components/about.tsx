@@ -1,10 +1,18 @@
 import Link from "next/link"
 import Image from "next/image"
+import AnimatedBackground from "./animated-background";
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 relative bg-white">
+      {/* Add the animated background */}
+      <AnimatedBackground 
+        variant="particles" 
+        colorScheme="mixed" 
+        opacity={0.05} 
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-2">ABOUT SYNEXIS</h2>
           <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto"></div>
@@ -33,7 +41,7 @@ export default function About() {
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
-                  href="https://chat.whatsapp.com/synexis"
+                  href="https://chat.whatsapp.com/BON5jywwjWm9LhqpUtOpJ6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-green-500/30 transform hover:-translate-y-1"

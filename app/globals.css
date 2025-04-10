@@ -10,6 +10,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  cursor: none; /* Hide the default cursor */
 }
 
 html {
@@ -156,5 +157,17 @@ html {
 .btn-hover-effect:hover:after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Custom cursor styles */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Keep default cursor for interactive elements */
+a, button, input, textarea, select {
+  cursor: none;
 }
 

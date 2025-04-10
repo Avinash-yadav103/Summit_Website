@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 
 export default function Hero() {
-  // Set the event date (example: June 15, 2025)
-  const eventDate = new Date("2025-06-15T09:00:00").getTime()
+  // Set the event date (example: April 16, 2025)
+  const eventDate = new Date("2025-04-16T09:00:00").getTime()
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -82,7 +82,7 @@ export default function Hero() {
             SYNEXIS
           </h1>
           <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-white/90">
-            JUNE 15, 2025 • VIRTUAL & IN-PERSON
+            April 16, 2025 • VIRTUAL & IN-PERSON
           </p>
 
           <Link
