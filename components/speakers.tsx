@@ -4,32 +4,65 @@ export default function Speakers() {
   const speakers = [
     {
       id: 1,
-      name: "Dr. Sarah Johnson",
-      role: "AI Research Lead, Google",
-      image: "/speaker1.jpg",
-      bio: "Leading expert in artificial intelligence and machine learning with over 15 years of experience.",
+      name: "Dr Sanjeen Sawhney",
+      role: "Enterpreneur | Mentor",
+      image: "/speaker1.png",
+      bio: "FORBES-Asia Power Business Woman|4xTed Speaker|Best Women Entrepreneur Award-Zee|International Nelson Mandela Award",
     },
     {
       id: 2,
-      name: "Prof. Emily Chen",
-      role: "Professor of Robotics, MIT",
+      name: "Priya Vajpeyi",
+      role: "Founder@Cuerik | TedX Speaker",
       image: "/speaker2.jpg",
-      bio: "Award-winning researcher in robotics and automation systems.",
+      bio: "gdfgdf",
     },
     {
       id: 3,
-      name: "Olivia Rodriguez",
-      role: "CTO, TechFuture Inc.",
+      name: "Aditya Mani",
+      role: "Founder, YOLOgram",
       image: "/speaker3.jpg",
-      bio: "Technology leader with expertise in scaling engineering teams and building innovative products.",
+      bio: "(Your Hologram) Share playful animated stories to Social AR & the Metaverse",
     },
     {
       id: 4,
-      name: "Dr. Maya Patel",
-      role: "Quantum Computing Researcher",
+      name: "Avneet Kohli",
+      role: "Founder, Encubay | TedX Speaker",
       image: "/speaker4.jpg",
-      bio: "Pioneer in quantum computing applications for solving complex engineering problems.",
+      bio: "YourStory’s Top 100 Emerging Leaders",
     },
+    {
+      id: 5,
+      name: "Avneet Kohli",
+      role: "Founder, Encubay",
+      image: "/speaker4.jpg",
+      bio: "YourStory’s Top 100 Emerging Leaders",
+    },    {
+      id: 6,
+      name: "Avneet Kohli",
+      role: "Founder, Encubay",
+      image: "/speaker4.jpg",
+      bio: "YourStory’s Top 100 Emerging Leaders",
+    },    {
+      id: 7,
+      name: "Avneet Kohli",
+      role: "Founder, Encubay",
+      image: "/speaker4.jpg",
+      bio: "YourStory’s Top 100 Emerging Leaders",
+    },    {
+      id: 8,
+      name: "Avneet Kohli",
+      role: "Founder, Encubay",
+      image: "/speaker4.jpg",
+      bio: "YourStory’s Top 100 Emerging Leaders",
+    },
+    {
+      id: 4,
+      name: "Avneet Kohli",
+      role: "Founder, Encubay",
+      image: "/speaker4.jpg",
+      bio: "YourStory’s Top 100 Emerging Leaders",
+    },
+    
   ]
 
   return (
@@ -49,7 +82,7 @@ export default function Speakers() {
               key={speaker.id}
               className="glass-card rounded-xl overflow-hidden shadow-strong hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
-              <div className="relative h-64 w-full overflow-hidden">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
                   src={speaker.image || "/placeholder.svg"}
                   alt={speaker.name}

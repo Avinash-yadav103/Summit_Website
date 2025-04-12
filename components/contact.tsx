@@ -21,44 +21,6 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    try {
-      // Send the form data to our API route
-      const response = await fetch("http://localhost:3001/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to send message")
-      }
-
-      setSubmitMessage("Thank you for your message! We will get back to you soon.")
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
-    } catch (error) {
-      console.error("Error sending message:", error)
-      setSubmitMessage("There was an error sending your message. Please try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <section id="contact" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white relative">
       {/* Background decorative elements */}
@@ -75,6 +37,7 @@ export default function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+          {/* Contact information (left column) */}
           <div className="glass-card p-8 rounded-2xl shadow-soft">
             <h3 className="text-xl sm:text-2xl font-bold mb-6 text-purple-900">Get In Touch</h3>
 
@@ -209,18 +172,27 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* Form (right column) */}
           <div className="glass-card p-8 rounded-2xl shadow-strong">
             <h3 className="text-xl font-bold mb-6 text-center text-purple-900">Send Us a Message</h3>
 
             {submitMessage && (
               <div
-                className={`p-4 mb-6 rounded-lg text-sm ${submitMessage.includes("error") ? "bg-red-100 text-red-700 border border-red-200" : "bg-green-100 text-green-700 border border-green-200"}`}
+                className={`p-4 mb-6 rounded-lg text-sm ${
+                  submitMessage.includes("error")
+                    ? "bg-red-100 text-red-700 border border-red-200"
+                    : "bg-green-100 text-green-700 border border-green-200"
+                }`}
               >
                 {submitMessage}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              action="https://formspree.io/f/mzzeogpa"
+              method="POST"
+              className="space-y-4"
+            >
               <div>
                 <label htmlFor="contact-name" className="block text-sm font-medium mb-1 text-gray-700">
                   Your Name *
@@ -287,10 +259,9 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-pink-500/30 transform hover:-translate-y-1 disabled:opacity-70 disabled:transform-none disabled:hover:shadow-none"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                Send Message
               </button>
             </form>
           </div>
@@ -299,4 +270,3 @@ export default function Contact() {
     </section>
   )
 }
-
