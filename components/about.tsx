@@ -1,15 +1,15 @@
 import Link from "next/link"
 import Image from "next/image"
-import AnimatedBackground from "./animated-background";
+import ColorChangingBackground from "./color-changing-background";
 
 export default function About() {
   return (
     <section id="about" className="py-20 relative bg-white">
-      {/* Add the animated background */}
-      <AnimatedBackground 
-        variant="particles" 
-        colorScheme="mixed" 
+      {/* Add color-changing background */}
+      <ColorChangingBackground 
+        colors={["#e9d5ff", "#fae8ff", "#d8b4fe", "#f5d0fe"]} 
         opacity={0.05} 
+        duration={20}
       />
       
       <div className="container mx-auto px-4 relative z-10">
@@ -21,11 +21,11 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="order-2 md:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-strong transform hover:scale-[1.02] transition-transform duration-500">
-              <Image src="/about-image.jpg" alt="IEEE WIE" width={600} height={400} className="w-full h-auto" />
+              <Image src="/about.jpg" alt="IEEE WIE" width={600} height={400} className="w-full h-auto" />
               <div className="absolute inset-0 bg-gradient-to-t from-purple-900/70 to-transparent opacity-60 hover:opacity-40 transition-opacity"></div>
             </div>
           </div>
-
+    
           <div className="order-1 md:order-2">
             <div className="glass-card p-6 sm:p-8 rounded-2xl">
               <h3 className="text-xl sm:text-2xl font-bold mb-4 text-purple-900">IEEE Women in Engineering (WIE)</h3>

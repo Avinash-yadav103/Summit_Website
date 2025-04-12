@@ -23,10 +23,24 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white relative">
-      {/* Background decorative elements */}
+      {/* Background decorative elements - REPLACED WITH NEW SVG ELEMENTS */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-pink-100 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-100 rounded-full opacity-20 blur-3xl"></div>
+        <svg
+          className="absolute right-0 top-0 h-full text-purple-50"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          fill="currentColor"
+        >
+          <polygon points="0,0 100,0 100,100" opacity="0.8"></polygon>
+        </svg>
+        <svg
+          className="absolute left-0 bottom-0 h-full text-pink-50 transform rotate-180"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          fill="currentColor"
+        >
+          <polygon points="0,0 100,0 100,100" opacity="1"></polygon>
+        </svg>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -204,7 +218,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-700"
+                  className="w-full px-4 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lavender-500 text-gray-700 transition-all"
                   placeholder="Your full name"
                 />
               </div>
@@ -259,7 +273,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-pink-500/30 transform hover:-translate-y-1 disabled:opacity-70 disabled:transform-none disabled:hover:shadow-none"
+                className="w-full bg-gradient-to-r from-lavender-600 to-purple-700 hover:from-lavender-500 hover:to-purple-600 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-lavender-500/30 transform hover:-translate-y-1 disabled:opacity-70 disabled:transform-none disabled:hover:shadow-none lavender-pulse"
               >
                 Send Message
               </button>

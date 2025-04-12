@@ -5,6 +5,10 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --lavender-light: #e6e6fa;
+  --lavender-medium: #d8bfd8;
+  --lavender-dark: #9370db;
+  --lavender-deep: #8a2be2;
 }
 
 body {
@@ -44,6 +48,19 @@ button {
 /* Section transitions */
 section {
   transition: background-color 0.5s ease;
+  position: relative;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(230, 230, 250, 0.02), rgba(147, 112, 219, 0.03));
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Animation for mobile menu */
@@ -60,6 +77,38 @@ section {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Loader animations */
+@keyframes letterFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingProgress {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 60%;
+  }
+  80% {
+    width: 80%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.letter-animation {
+  opacity: 0;
+  animation: letterFade 0.5s ease-out forwards;
 }
 
 /* Glassmorphism effects */
@@ -81,8 +130,8 @@ section {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(230, 230, 250, 0.3);
+  box-shadow: 0 8px 32px rgba(147, 112, 219, 0.1);
 }
 
 /* Enhanced shadows */
@@ -171,3 +220,61 @@ a, button, input, textarea, select {
   cursor: none;
 }
 
+/* Custom lavender inputs focus */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--lavender-medium);
+  box-shadow: 0 0 0 2px rgba(147, 112, 219, 0.2);
+}
+
+/* Add a subtle pulse animation for interactions */
+@keyframes lavender-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(147, 112, 219, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(147, 112, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(147, 112, 219, 0);
+  }
+}
+
+.lavender-pulse:hover {
+  animation: lavender-pulse 1.5s infinite;
+}
+
+/* Example button style modification */
+button.w-full {
+  background: linear-gradient(to right, var(--lavender-dark), #6a0dad);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(147, 112, 219, 0.3);
+}
+
+button.w-full:hover {
+  background: linear-gradient(to right, var(--lavender-medium), #5a0cac);
+  transform: translateY(-0.25rem);
+  box-shadow: 0 10px 30px rgba(147, 112, 219, 0.5);
+}
+
+button.w-full:disabled {
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Make sure animated backgrounds appear behind content but are still visible */
+.animated-background-container {
+  z-index: 0;
+  opacity: 1.15 !important; /* Force lower opacity if needed */
+  pointer-events: none;
+}
+
+/* Ensure content has proper z-index */
+main, header, section, footer {
+  position: relative;
+  z-index: 1;
+}

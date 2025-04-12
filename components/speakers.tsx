@@ -1,4 +1,5 @@
 import Image from "next/image"
+import ColorChangingBackground from "./color-changing-background";
 
 export default function Speakers() {
   const speakers = [
@@ -28,46 +29,56 @@ export default function Speakers() {
       name: "Avneet Kohli",
       role: "Founder, Encubay | TedX Speaker",
       image: "/speaker4.jpg",
-      bio: "YourStory’s Top 100 Emerging Leaders",
+      bio: "YourStory's Top 100 Emerging Leaders",
     },
+    // Fix duplicate IDs by changing them to unique values
     {
       id: 5,
       name: "Avneet Kohli",
       role: "Founder, Encubay",
       image: "/speaker4.jpg",
-      bio: "YourStory’s Top 100 Emerging Leaders",
-    },    {
+      bio: "YourStory's Top 100 Emerging Leaders",
+    },
+    {
       id: 6,
       name: "Avneet Kohli",
       role: "Founder, Encubay",
       image: "/speaker4.jpg",
-      bio: "YourStory’s Top 100 Emerging Leaders",
-    },    {
+      bio: "YourStory's Top 100 Emerging Leaders",
+    },
+    {
       id: 7,
       name: "Avneet Kohli",
       role: "Founder, Encubay",
       image: "/speaker4.jpg",
-      bio: "YourStory’s Top 100 Emerging Leaders",
-    },    {
+      bio: "YourStory's Top 100 Emerging Leaders",
+    },
+    {
       id: 8,
       name: "Avneet Kohli",
       role: "Founder, Encubay",
       image: "/speaker4.jpg",
-      bio: "YourStory’s Top 100 Emerging Leaders",
+      bio: "YourStory's Top 100 Emerging Leaders",
     },
     {
-      id: 4,
+      id: 9, // Changed from 4 to 9 to fix duplicate key issue
       name: "Avneet Kohli",
       role: "Founder, Encubay",
       image: "/speaker4.jpg",
-      bio: "YourStory’s Top 100 Emerging Leaders",
+      bio: "YourStory's Top 100 Emerging Leaders",
     },
-    
   ]
 
   return (
-    <section id="speakers" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="speakers" className="py-16 sm:py-20 md:py-24 relative">
+      {/* Add color-changing background with different colors for variation */}
+      <ColorChangingBackground 
+        colors={["#d8b4fe", "#f0abfc", "#c084fc", "#f5d0fe"]} 
+        opacity={0.26} 
+        duration={25}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-2">SPEAKERS</h2>
           <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto"></div>

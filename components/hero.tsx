@@ -50,6 +50,7 @@ export default function Hero() {
           backgroundImage: "url('/hero-bg.jpg')",
           backgroundPosition: "center",
           backgroundSize: "cover",
+          opacity: 0.5,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-purple-900/60"></div>
