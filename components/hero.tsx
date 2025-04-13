@@ -74,43 +74,58 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 z-10 text-center">
-        <div className="glass-dark p-8 rounded-2xl max-w-4xl mx-auto shadow-strong">
+      {/* <div className="absolute inset-0 z-0">
+        
+      </div> */}
+
+      <div className="container mx-auto px-4 z-10 text-center relative max-w-4xl">
+        <div className="absolute inset-0 z-0">
+          <video
+        autoPlay
+        loop
+        muted
+        className="w-full h-full object-cover rounded-2xl max-w-3xl mx-auto"
+          >
+        <source src="/background-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+          </video>
+        </div>
+        <div className="relative z-10 glass-dark p-8 rounded-2xl max-w-3xl mx-auto shadow-strong opacity-90 backdrop-blur-md">
           <p className="text-pink-400 mb-2 text-sm sm:text-base font-medium tracking-wider">
-            IEEE Women in Engineering Presents
+        IEEE Women in Engineering Presents
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-            SYNEXIS
+        SYNEXIS
           </h1>
           <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-white/90">
-            April 16, 2025 • VIRTUAL & IN-PERSON
+        April 16, 2025 • VIRTUAL & IN-PERSON
           </p>
 
           <Link
-            href="#register"
-            className="inline-block bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all shadow-lg hover:shadow-pink-500/30 transform hover:-translate-y-1 btn-hover-effect"
+        href="#register"
+        className="inline-block bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all shadow-lg hover:shadow-pink-500/30 transform hover:-translate-y-1 btn-hover-effect"
           >
-            REGISTER NOW
+        REGISTER NOW
           </Link>
 
           {/* Countdown timer */}
           <div className="mt-10 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6">
-            <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
-              <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.days}</span>
-              <span className="text-xs sm:text-sm uppercase text-purple-200">Days</span>
-            </div>
-            <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
-              <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.hours}</span>
-              <span className="text-xs sm:text-sm uppercase text-purple-200">Hours</span>
-            </div>
-            <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
-              <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.minutes}</span>
-              <span className="text-xs sm:text-sm uppercase text-purple-200">Minutes</span>
-            </div>
-            <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
-              <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.seconds}</span>
-              <span className="text-xs sm:text-sm uppercase text-purple-200">Seconds</span>
-            </div>
+        <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
+          <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.days}</span>
+          <span className="text-xs sm:text-sm uppercase text-purple-200">Days</span>
+        </div>
+        <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
+          <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.hours}</span>
+          <span className="text-xs sm:text-sm uppercase text-purple-200">Hours</span>
+        </div>
+        <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
+          <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.minutes}</span>
+          <span className="text-xs sm:text-sm uppercase text-purple-200">Minutes</span>
+        </div>
+        <div className="bg-purple-900/80 backdrop-blur-md w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center shadow-lg transform hover:scale-105 transition-transform border border-purple-500/30">
+          <span className="text-2xl sm:text-3xl md:text-5xl font-bold">{timeLeft.seconds}</span>
+          <span className="text-xs sm:text-sm uppercase text-purple-200">Seconds</span>
+        </div>
           </div>
         </div>
       </div>

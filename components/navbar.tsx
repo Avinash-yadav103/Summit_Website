@@ -7,6 +7,7 @@ import Link from "next/link"
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeLink, setActiveLink] = useState("/")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,20 @@ export default function Navbar() {
         setScrolled(true)
       } else {
         setScrolled(false)
+      }
+      
+      // Update active section based on scroll position
+      const sections = ["home", "about", "speakers", "register", "contact"];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element && 
+            scrollPosition >= element.offsetTop && 
+            scrollPosition < element.offsetTop + element.offsetHeight) {
+          setActiveLink(section === "home" ? "/" : `#${section}`);
+          break;
+        }
       }
     }
 
@@ -40,49 +55,31 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:flex space-x-8">
-            <Link
-              href="/"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              Home
-            </Link>
-            <Link
-              href="#about"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              About
-            </Link>
-            <Link
-              href="#speakers"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              Speakers
-            </Link>
-            <Link
-              href="#sponsors"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              Sponsors
-            </Link>
-            <Link
-              href="#register"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              Register
-            </Link>
-            <Link
-              href="#volunteer"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              Volunteer
-            </Link>
-            <Link
-              href="#contact"
-              className="text-white hover:text-pink-500 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-pink-500 after:transition-all"
-            >
-              Contact
-            </Link>
+          <div className="hidden md:flex space-x-6">
+            {[
+              { href: "/", label: "Home" },
+              { href: "#about", label: "About" },
+              { href: "#speakers", label: "Speakers" },
+              { href: "#register", label: "Register" },
+              { href: "#contact", label: "Contact" }
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`nav-link relative px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                  activeLink === link.href 
+                    ? "text-pink-400" 
+                    : "text-white hover:text-pink-300"
+                }`}
+                onClick={() => setActiveLink(link.href)}
+              >
+                {link.label}
+                <span className="nav-link-effect absolute bottom-0 left-0 w-full h-0.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 transform scale-x-0 origin-center transition-transform duration-300 ease-out"></span>
+                <span className={`absolute -inset-1 rounded-lg bg-white/5 opacity-0 transition-opacity duration-300 ${
+                  activeLink === link.href ? "opacity-100" : "group-hover:opacity-100"
+                }`}></span>
+              </Link>
+            ))}
           </div>
 
           <div className="md:hidden">
@@ -118,27 +115,29 @@ export default function Navbar() {
 
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-fadeIn glass-dark rounded-lg p-4 mt-2 shadow-lg">
-            <Link href="/" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              Home
-            </Link>
-            <Link href="#about" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              About
-            </Link>
-            <Link href="#speakers" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              Speakers
-            </Link>
-            <Link href="#sponsors" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              Sponsors
-            </Link>
-            <Link href="#register" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              Register
-            </Link>
-            <Link href="#volunteer" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              Volunteer
-            </Link>
-            <Link href="#contact" className="block py-2 text-white hover:text-pink-500 transition-colors">
-              Contact
-            </Link>
+            {[
+              { href: "/", label: "Home" },
+              { href: "#about", label: "About" },
+              { href: "#speakers", label: "Speakers" },
+              { href: "#register", label: "Register" },
+              { href: "#contact", label: "Contact" }
+            ].map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                className={`mobile-nav-link block py-2 px-3 rounded-md transition-all duration-300 ${
+                  activeLink === link.href 
+                    ? "text-white bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-l-2 border-pink-500" 
+                    : "text-white hover:bg-white/5"
+                }`}
+                onClick={() => {
+                  setActiveLink(link.href);
+                  setIsMenuOpen(false);
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         )}
       </div>
