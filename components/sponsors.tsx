@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function Sponsors() {
   const sponsors = [
@@ -8,22 +8,22 @@ export default function Sponsors() {
     { id: 4, name: "Intel", tier: "Gold", logo: "/sponsor-intel.png" },
     { id: 5, name: "Amazon", tier: "Silver", logo: "/sponsor-amazon.png" },
     { id: 6, name: "Cisco", tier: "Silver", logo: "/sponsor-cisco.png" },
-  ]
+  ];
 
   // Group sponsors by tier
-  const sponsorsByTier = sponsors.reduce((acc, sponsor) => {
+  const sponsorsByTier = sponsors.reduce<Record<string, typeof sponsors>>((acc, sponsor) => {
     if (!acc[sponsor.tier]) {
-      acc[sponsor.tier] = []
+      acc[sponsor.tier] = [];
     }
-    acc[sponsor.tier].push(sponsor)
-    return acc
-  }, {})
+    acc[sponsor.tier].push(sponsor);
+    return acc;
+  }, {});
 
-  const tierColors = {
+  const tierColors: Record<"Platinum" | "Gold" | "Silver", string> = {
     Platinum: "from-purple-400 to-pink-400",
     Gold: "from-yellow-400 to-amber-500",
     Silver: "from-gray-300 to-gray-400",
-  }
+  };
 
   return (
     <section id="sponsors" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white">
@@ -34,34 +34,39 @@ export default function Sponsors() {
           <p className="mt-4 text-gray-600 text-sm sm:text-base">We thank our sponsors for making Synexis possible</p>
         </div>
 
-        {Object.entries(sponsorsByTier).map(([tier, tierSponsors]) => (
-          <div key={tier} className="mb-12 sm:mb-16">
-            <h3 className="text-xl font-bold text-center mb-8 relative">
-              <span
-                className={`inline-block px-8 py-2 rounded-full bg-gradient-to-r ${tierColors[tier]} text-white shadow-md`}
-              >
-                {tier} Sponsors
-              </span>
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
-              {tierSponsors.map((sponsor) => (
-                <div
-                  key={sponsor.id}
-                  className="glass-card p-6 rounded-xl shadow-soft hover:shadow-lg transition-all duration-300 w-full h-32 flex items-center justify-center transform hover:scale-105"
+        {Object.entries(sponsorsByTier).map(([tier, tierSponsors]) => {
+          // Ensure `tier` is typed correctly
+          const typedTier = tier as keyof typeof tierColors;
+
+          return (
+            <div key={tier} className="mb-12 sm:mb-16">
+              <h3 className="text-xl font-bold text-center mb-8 relative">
+                <span
+                  className={`inline-block px-8 py-2 rounded-full bg-gradient-to-r ${tierColors[typedTier]} text-white shadow-md`}
                 >
-                  <div className="relative h-20 w-full">
-                    <Image
-                      src={sponsor.logo || "/placeholder.svg"}
-                      alt={sponsor.name}
-                      fill
-                      className="object-contain"
-                    />
+                  {tier} Sponsors
+                </span>
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
+                {tierSponsors.map((sponsor) => (
+                  <div
+                    key={sponsor.id}
+                    className="glass-card p-6 rounded-xl shadow-soft hover:shadow-lg transition-all duration-300 w-full h-32 flex items-center justify-center transform hover:scale-105"
+                  >
+                    <div className="relative h-20 w-full">
+                      <Image
+                        src={sponsor.logo || "/placeholder.svg"}
+                        alt={sponsor.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         <div className="text-center mt-12 glass-card p-8 rounded-xl max-w-2xl mx-auto shadow-soft">
           <h3 className="text-xl font-bold mb-4">Become a Sponsor</h3>
@@ -77,6 +82,6 @@ export default function Sponsors() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 

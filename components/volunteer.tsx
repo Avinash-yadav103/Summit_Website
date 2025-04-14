@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState, ChangeEvent, FormEvent } from "react";
 
 export default function Volunteer() {
   const [formData, setFormData] = useState({
@@ -9,42 +9,42 @@ export default function Volunteer() {
     phone: "",
     experience: "",
     motivation: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       // Here you would typically send the data to your backend
       // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      setSubmitMessage("Thank you for your interest in volunteering! We will contact you soon.")
+      setSubmitMessage("Thank you for your interest in volunteering! We will contact you soon.");
       setFormData({
         name: "",
         email: "",
         phone: "",
         experience: "",
         motivation: "",
-      })
+      });
     } catch (error) {
-      setSubmitMessage("There was an error submitting your application. Please try again.")
+      setSubmitMessage("There was an error submitting your application. Please try again.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section id="volunteer" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-gray-50 relative">
@@ -268,6 +268,6 @@ export default function Volunteer() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 

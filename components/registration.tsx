@@ -1,52 +1,52 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState, ChangeEvent, FormEvent } from "react";
 
 export default function Registration() {
-  const [showForm, setShowForm] = useState(false)
+  const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     organization: "",
     role: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       // Here you would typically send the data to your backend
       // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Redirect to Luma events
-      window.open("https://lu.ma/event/synexis-ieee-wie", "_blank")
+      window.open("https://lu.ma/event/synexis-ieee-wie", "_blank");
 
-      setSubmitMessage("Registration successful! Redirecting to complete your registration...")
+      setSubmitMessage("Registration successful! Redirecting to complete your registration...");
       setFormData({
         name: "",
         email: "",
         organization: "",
         role: "",
-      })
+      });
     } catch (error) {
-      setSubmitMessage("There was an error processing your registration. Please try again.")
+      setSubmitMessage("There was an error processing your registration. Please try again.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section
@@ -201,6 +201,6 @@ export default function Registration() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 

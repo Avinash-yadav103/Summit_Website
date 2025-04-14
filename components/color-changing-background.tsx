@@ -17,7 +17,7 @@ export default function ColorChangingBackground({
 }: ColorChangingBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const progressRef = useRef(0);
   const lastScrollY = useRef(0);
   const isScrolling = useRef(false);
@@ -112,7 +112,7 @@ export default function ColorChangingBackground({
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("scroll", handleScroll);
-      if (animationRef.current) {
+      if (animationRef.current !== null) {
         cancelAnimationFrame(animationRef.current);
       }
     };

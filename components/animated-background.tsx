@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 interface AnimatedBackgroundProps {
   variant?: "particles" | "waves" | "grid";
-  colorScheme?: "purple" | "pink" | "mixed" | "lavender" | "red" ; // Added lavender
+  colorScheme?: "purple" | "pink" | "mixed" | "lavender" | "red"; // Added lavender and red
   density?: "low" | "medium" | "high";
   speed?: "slow" | "medium" | "fast";
   opacity?: number;
@@ -45,7 +45,8 @@ export default function AnimatedBackground({
       purple: ["rgba(139, 92, 246, 0.7)", "rgba(124, 58, 237, 0.5)", "rgba(109, 40, 217, 0.3)"],
       pink: ["rgba(244, 114, 182, 0.7)", "rgba(236, 72, 153, 0.5)", "rgba(219, 39, 119, 0.3)"],
       mixed: ["rgba(139, 92, 246, 0.6)", "rgba(236, 72, 153, 0.5)", "rgba(109, 40, 217, 0.4)", "rgba(219, 39, 119, 0.3)"],
-      lavender: ["rgba(230, 230, 250, 0.7)", "rgba(216, 191, 216, 0.6)", "rgba(183, 176, 230, 0.5)"]
+      lavender: ["rgba(230, 230, 250, 0.7)", "rgba(216, 191, 216, 0.6)", "rgba(183, 176, 230, 0.5)"],
+      red: ["rgba(254, 202, 202, 0.7)", "rgba(252, 165, 165, 0.6)", "rgba(248, 113, 113, 0.5)", "rgba(239, 68, 68, 0.4)"]
     };
 
     const selectedColors = colors[colorScheme];

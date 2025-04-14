@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface AnimatedLetterProps {
   letter: string;
@@ -9,8 +9,13 @@ interface AnimatedLetterProps {
   isActive: boolean;
 }
 
+// Define a type for the possible animation states
+type AnimationState = "initial" | "zooming" | "visible" | "dissolving";
+
 export default function AnimatedLetter({ letter, index, delay, isActive }: AnimatedLetterProps) {
-  const [animationState, setAnimationState] = useState("initial"); // initial, zooming, visible, dissolving
+  // Type the state variable with our defined type
+  const [animationState, setAnimationState] = useState<AnimationState>("initial");
+  const animationRef = useRef<number | null>(null);
   
   useEffect(() => {
     // First animation: Start zooming in
